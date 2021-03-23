@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import './App.scss';
+
+import HeaderText from './components/atoms/header_text/HeaderText';
+import SearchBar from "./components/atoms/search_bar/SearchBar";
 
 function App() {
+const [isLoading, setLoading] =  useState<boolean>(false);
+const [searchValue, setSearchValue] = useState<string>('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className={["header", isLoading ? "is-animating" : ""].join(' ')}>
+          <HeaderText label={'What Pokémon are you looking for?'} />
+          <SearchBar value={searchValue} onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => setSearchValue(ev.target.value)}/>
+      </div>
     </div>
   );
 }

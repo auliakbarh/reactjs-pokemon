@@ -1,0 +1,51 @@
+.App {
+  height: 100vh;
+}
+
+.header {
+  background: #fff;
+  padding: 117px 8% 58px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.header > * {
+  z-index: 1;
+  position: relative;
+}
+
+.header.is-animating:after, .header.is-animating::after {
+  animation: spin 1s ease infinite;
+}
+
+.header:after, .header::after {
+  position: absolute;
+  content: '';
+  width: 250px;
+  height: 250px;
+  top: 48px;
+  right: calc(8% + 16px);
+  background: url("./assets/images/pokeball-0-full.png") no-repeat;
+  background-size: 250px;
+  z-index: 0;
+
+  -webkit-transform: translate(50%, -50%);
+  -moz-transform: translate(50%, -50%);
+  transform: translate(50%, -50%);
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: translate(50%, -50%);
+    -moz-transform: translate(50%, -50%);
+    transform: translate(50%, -50%) rotateZ(0);
+  }
+
+  to {
+    -webkit-transform: translate(50%, -50%);
+    -moz-transform: translate(50%, -50%);
+    transform: translate(50%, -50%) rotateZ(360deg);
+  }
+}
